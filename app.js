@@ -17,7 +17,7 @@ const locationController = require("./routes/locationController");
 // mongoose.connect("mongodb://localhost/deploy-exercise");
 
 
-mongoose.connect("mongodb://localhost/deploy-exercise", {
+mongoose.connect("mongodb://heroku_bdn12xcl:ggoupqbi9vsvdhq2nfgbs94tkn@ds353748.mlab.com:53748/heroku_bdn12xcl", {
   useUnifiedTopology: true,
   useCreateIndex: true,
   useNewUrlParser: true,
