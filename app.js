@@ -14,7 +14,22 @@ const siteController     = require("./routes/siteController");
 const locationController = require("./routes/locationController");
 
 // Mongoose configuration
-mongoose.connect("mongodb://localhost/deploy-exercise");
+// mongoose.connect("mongodb://localhost/deploy-exercise");
+
+
+mongoose.connect("mongodb://localhost/deploy-exercise", {
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+});
+
+mongoose.connection.on("connected", () =>
+  console.log("yay mongodb connected :)")
+);
+
+mongoose.connection.on("error", () => console.log("nay db error sorry :("));
+
 
 // Middlewares configuration
 app.use(logger("dev"));
@@ -62,5 +77,13 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render("site/error");
 });
+
+
+
+
+
+
+app.listen(5000, () => console.log('App listening on port 5000!'))
+
 
 module.exports = app;
